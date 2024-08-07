@@ -10,19 +10,17 @@ To use the OpenAI Connector, you must have access to the OpenAI API through a [O
 
 #### Create a OpenAI API Key
 
-1. Open the [OpenAI Platform Dashboard](https://platform.openai.com).
-
-
 2. Navigate to Dashboard -> API keys
-![api-key-dashboard](https://github.com/e19166/module-ballerinax-openai-audio/blob/docs/docs/setup/resources/api-key-dashboard.png)
+![navigate-api-key-dashboard](https://github.com/e19166/module-ballerinax-openai-audio/blob/docs/docs/setup/resources/navigate-api-key-dashboard.png)
 
 3. Click on the "Create new secret key" button
-![create-new-secret-key](https://github.com/e19166/module-ballerinax-openai-audio/blob/docs/docs/setup/resources/create-new-secrete-key.png)
+![api-key-dashboard](https://github.com/e19166/module-ballerinax-openai-audio/blob/docs/docs/setup/resources/api-key-dashboard.png)
 
 4. Fill the details and click on Create secret key
-![saved-key](https://github.com/e19166/module-ballerinax-openai-audio/blob/docs/docs/setup/resources/saved-key.png)
+![create-new-secret-key](https://github.com/e19166/module-ballerinax-openai-audio/blob/docs/docs/setup/resources//create-new-secret-key.png)
 
-5. Store the API key securely to use in your application
+5.  Store the API key securely to use in your application
+![saved-key](https://github.com/e19166/module-ballerinax-openai-audio/blob/docs/docs/setup/resources//saved-key.png)
 
 ## Quickstart
 
