@@ -69,7 +69,7 @@ public isolated client class Client {
     #
     # + headers - Headers to be sent with the request 
     # + return - OK 
-    resource isolated function post audio/transcriptions(CreateTranscriptionRequest payload, map<string|string[]> headers = {}) returns inline_response_200|error {
+    resource isolated function post audio/transcriptions(CreateTranscriptionRequest payload, map<string|string[]> headers = {}) returns CreateTranscriptionResponse|error {
         string resourcePath = string `/audio/transcriptions`;
         http:Request request = new;
         mime:Entity[] bodyParts = check createBodyParts(payload);
@@ -81,7 +81,7 @@ public isolated client class Client {
     #
     # + headers - Headers to be sent with the request 
     # + return - OK 
-    resource isolated function post audio/translations(CreateTranslationRequest payload, map<string|string[]> headers = {}) returns inline_response_200_1|error {
+    resource isolated function post audio/translations(CreateTranslationRequest payload, map<string|string[]> headers = {}) returns CreateTranslationResponse|error {
         string resourcePath = string `/audio/translations`;
         http:Request request = new;
         mime:Entity[] bodyParts = check createBodyParts(payload);
