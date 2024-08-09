@@ -46,6 +46,8 @@ public type TranscriptionSegment record {
     float no_speech_prob;
 };
 
+public type CreateTranscriptionResponse CreateTranscriptionResponseJson|CreateTranscriptionResponseVerboseJson;
+
 public type CreateTranslationResponseJson record {
     string text;
 };
@@ -139,10 +141,6 @@ public type CreateTranscriptionResponseVerboseJson record {
     TranscriptionSegment[] segments?;
 };
 
-public type inline_response_200_1 CreateTranslationResponseJson|CreateTranslationResponseVerboseJson;
-
-public type inline_response_200 CreateTranscriptionResponseJson|CreateTranscriptionResponseVerboseJson;
-
 public type CreateTranslationRequest record {|
     # The audio file object (not file name) translate, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm.
     record {byte[] fileContent; string fileName;} file;
@@ -190,3 +188,5 @@ public type ConnectionConfig record {|
     # Enables the inbound payload validation functionality which provided by the constraint package. Enabled by default
     boolean validation = true;
 |};
+
+public type CreateTranslationResponse CreateTranslationResponseJson|CreateTranslationResponseVerboseJson;
