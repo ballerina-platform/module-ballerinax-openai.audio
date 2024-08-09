@@ -1199,9 +1199,8 @@ paths:
                     content:
                         application/json:
                             schema:
-                                oneOf:
-                                    - $ref: "#/components/schemas/CreateTranscriptionResponseJson"
-                                    - $ref: "#/components/schemas/CreateTranscriptionResponseVerboseJson"
+                                $ref: "#/components/schemas/CreateTranscriptionResponse"
+                                    
             x-oaiMeta:
                 name: Create transcription
                 group: audio
@@ -1385,9 +1384,7 @@ paths:
                     content:
                         application/json:
                             schema:
-                                oneOf:
-                                    - $ref: "#/components/schemas/CreateTranslationResponseJson"
-                                    - $ref: "#/components/schemas/CreateTranslationResponseVerboseJson"
+                                $ref: "#/components/schemas/CreateTranslationResponse"
             x-oaiMeta:
                 name: Create translation
                 group: audio
@@ -9424,6 +9421,11 @@ components:
                 group: audio
                 example: *verbose_transcription_response_example
 
+        CreateTranscriptionResponse:
+          oneOf:
+            - $ref: "#/components/schemas/CreateTranscriptionResponseJson"
+            - $ref: "#/components/schemas/CreateTranscriptionResponseVerboseJson"
+
         CreateTranslationRequest:
             type: object
             additionalProperties: false
@@ -9488,6 +9490,11 @@ components:
                     items:
                         $ref: "#/components/schemas/TranscriptionSegment"
             required: [language, duration, text]
+
+        CreateTranslationResponse:
+            oneOf:
+                - $ref: "#/components/schemas/CreateTranslationResponseJson"
+                - $ref: "#/components/schemas/CreateTranslationResponseVerboseJson"
 
         CreateSpeechRequest:
             type: object
