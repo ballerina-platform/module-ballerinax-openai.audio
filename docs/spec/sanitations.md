@@ -40,7 +40,6 @@ These changes are done in order to improve the overall usability, and as workaro
       - Created a new `schema` in the `components` field and added the reference in the `/audio/transcription` path definition
          - $ref: "#/components/schemas/CreateTranscriptionResponse"
       
-
          - CreateTranscriptionResponse:
             oneOf:
                - $ref: "#/components/schemas/CreateTranscriptionResponseJson"
