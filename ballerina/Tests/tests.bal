@@ -15,7 +15,7 @@
 // under the License.
 
 import ballerina/test;
-
+import ballerina/mime;
 
 configurable boolean isLiveServer = ?;
 configurable string openAIKey = ?;
@@ -35,7 +35,6 @@ final readonly & byte[] content1 = [255,243,228,196,0,98,76,57,216,18,230,112,11
     groups: ["live_tests", "mock_tests"]
 }
 isolated function  testCreateTranslation() returns error? {
-    
     CreateTranslationRequest payload = {
         file: {
             fileContent: content1, fileName: "speech.mp3"},
@@ -49,7 +48,6 @@ isolated function  testCreateTranslation() returns error? {
     groups: ["live_tests", "mock_tests"]
 }
 isolated function  testCreateSpeech() returns error? {
-    
     CreateSpeechRequest requestPayload = {
         model: "tts-1",
         input: "The",
@@ -65,17 +63,14 @@ isolated function  testCreateSpeech() returns error? {
 @test:Config {
     enable:false
 }
-isolated function  testCreateTranscription() returns error? {
-   
+isolated function  testCreateTranscription() returns error? {  
    CreateTranscriptionRequest payload = {
        file: {fileContent: content1, fileName: "./speech.mp3"},
        model: "whisper-1",
        response_format: "verbose_json"  
    };
-   
-    map<string|string[]> headers = {
-       
-       "Content-Type": "multipart/form-data"
+    map<string> headers = {
+       "Content-Type": mime:MULTIPART_FORM_DATA
    };
 
     CreateTranscriptionResponse|error result = openAIAudios->/audio/transcriptions.post(payload, headers);
