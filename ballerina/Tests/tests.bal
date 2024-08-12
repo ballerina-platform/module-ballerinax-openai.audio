@@ -88,7 +88,7 @@ isolated function  testCreateTranscription() returns error? {
        "Content-Type": "multipart/form-data"
    };
 
-    CreateTranscriptionResponse|error result = openAIImages->/audio/transcriptions.post(payload, headers);
+    CreateTranscriptionResponse|error result = openAIAudios->/audio/transcriptions.post(payload, headers);
 
    if result is CreateTranscriptionResponse {
        test:assertEquals(result.text, "The quick brown fox jumped over the lazy dog.");
