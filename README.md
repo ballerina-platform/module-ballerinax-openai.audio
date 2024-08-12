@@ -10,7 +10,7 @@
 
 [OpenAI](https://openai.com/), a leading AI research organization focused on creating friendly AI for humanity, provides the [OpenAI API](https://platform.openai.com/docs/api-reference/introduction) to access its powerful AI models for tasks like natural language processing and image generation.
 
-The `ballarinax/openai.audio` package offers APIs to connect and interact with [Audio related endpoints of OpenAI API](https://platform.openai.com/docs/api-
+The `ballarinax/openai.audio` package offers APIs to connect and interact with [Audio related endpoints of OpenAI API v1](https://platform.openai.com/docs/api-reference/audio/create) providing access to various models developed by OpenAI for audio-related tasks.
 
 ## Setup guide
 
