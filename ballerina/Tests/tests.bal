@@ -15,7 +15,7 @@
 // under the License.
 
 import ballerina/test;
-import ballerina/mime;
+import ballerina/mime; 
 
 configurable boolean isLiveServer = ?;
 configurable string openAIKey = ?;
