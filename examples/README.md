@@ -2,13 +2,18 @@
 
 The `ballerinax/openai.audio` connector provides practical examples illustrating usage in various scenarios. Explore these [examples](https://github.com/ballerina-platform/module-ballerinax-openai.audio/tree/main/examples), covering use cases like cache management, session management, and rate limiting.
 
-[//]: # (TODO: Add examples)
-1. 
-2. 
+1. [Text-To-English-Audio](https://github.com/ballerina-platform/module-ballerinax-openai.audio/tree/main/examples/Text-To-English-Audio) - Converts a text given in any language to english
+2. [Audio-To-Input-Language-And-English](https://github.com/ballerina-platform/module-ballerinax-openai.audio/tree/main/examples/Audio-To-English-Audio)
 
 ## Prerequisites
 
-[//]: # (TODO: Add prerequisites)
+1. Generate a API as described in the [Setup guide](https://central.ballerina.io/ballerinax/openai.audio/latest#setup-guide).
+
+2. For each example, create a `Config.toml` file the related configuration. Here's an example of how your `Config.toml` file should look:
+
+    ```toml
+    openAIKey = "<API Key>"
+    ```
 
 ## Running an Example
 

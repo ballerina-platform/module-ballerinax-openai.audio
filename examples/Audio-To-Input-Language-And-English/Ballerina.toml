@@ -1,0 +1,8 @@
+[package]
+org = "wso2"
+name = "Audio_To_Input_Language_And_English"
+version = "0.1.0"
+distribution = "2201.9.3"
+
+[build-options]
+observabilityIncluded = true
