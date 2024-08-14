@@ -26,53 +26,57 @@ To use the OpenAI Connector, you must have access to the OpenAI API through a [O
 
 ## Quickstart
 
-### Step 1: Create a Ballerina package
-Use `bal new` to create a new package. 
+To use the `OpenAI Audio` connector in your Ballerina application, update the `.bal` file as follows: 
 
-```sh
-bal new openai_audio
-cd openai_audio
-```
+### Step 1: Import the module
 
-### Step 2: Invoke the audio API 
-Copy the following code to the `main.bal` file.
+Import the `openai.audio` module.
 
 ```ballerina
 import ballerinax/openai.audio;
+```
+
+### Step 2: Instantiate a new connector
+
+Create a `audio:ConnectionConfig` with the obtained API Key and initialize the connector.
+
+```ballerina
+configurable string apiKey = ?;
+
+final images:Client openAIAudio = check new ({
+    auth: {
+        token: apiKey
+    }
+});
+```
+
+### Step 3: Invoke the connector operation
+
+Now, utilize the available connector operations.
+
+#### Transcribe audio into input language
+```ballerina
 import ballerina/io;
 
-// Read the OpenAI key
-configurable string openAIKey = ?;
-
 public function main(string fileName) returns error? {
-    // Create an OpenAI audio client.
-    audio:Client OpenAIAudio = check new ({
-        auth: {token: openAIKey}
-    });
 
-    // Create a speech-to-text request.
     byte[] fileContent = check io:fileReadBytes(fileName);
     audio:CreateTranscriptionRequest request = {
         model: "whisper-1",
         file: {fileContent, fileName}
     };
 
-    // Call the API.
     audio:CreateTranscriptionResponse response =
         check OpenAIAudio->/audio/transcriptions.post(request);
     io:println(response);
 }
 ```
 
-### Step 3: Set up your OpenAI API Key
-Create a file called `Config.toml` at the root of the package directory and copy for the following content.
-```toml
-# OpenAI API Key
-openAIKey="..."
-```
+### Step 4: Run the Ballerina application
 
-### Step 4: Run the program
-Use the `bal run -- audio.mp3` command to compile and run the Ballerina program. Add the file path of `audio.mp3` to this command.
+```bash
+bal run
+```
 
 ## Examples
 
