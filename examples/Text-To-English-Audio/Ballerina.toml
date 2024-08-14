@@ -1,6 +1,6 @@
 [package]
 org = "wso2"
-name = "Text_To_English_Audio"
+name = "text_to_english_audio"
 version = "0.1.0"
 distribution = "2201.9.3"
 
