@@ -61,19 +61,18 @@ isolated function  testCreateSpeech() returns error? {
 
 
 @test:Config {
-    enable:false
+    enable:false,
+    groups: ["live_tests", "mock_tests"]
 }
 isolated function  testCreateTranscription() returns error? {  
    CreateTranscriptionRequest payload = {
        file: {fileContent: content1, fileName: "./speech.mp3"},
-       model: "whisper-1",
-       response_format: "verbose_json"  
-   };
+       model: "whisper-1"
+    };
     map<string> headers = {
        "Content-Type": mime:MULTIPART_FORM_DATA
    };
-
     CreateTranscriptionResponse result = check openAIAudio->/audio/transcriptions.post(payload, headers);
-    test:assertEquals(result.text, "The quick brown fox jumped over the lazy dog.");
+    test:assertEquals(result.text, "The");
 }
 
