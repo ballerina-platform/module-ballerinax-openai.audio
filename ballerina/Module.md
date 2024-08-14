@@ -2,7 +2,7 @@
 
 [OpenAI](https://openai.com/), an AI research organization focused on creating friendly AI for humanity, offers the [OpenAI API](https://platform.openai.com/docs/api-reference/introduction) to access its powerful AI models for tasks like natural language processing and image generation.
 
-The `ballarinax/openai.audio` package offers APIs to connect and interact with [Audio related endpoints of OpenAI API v1](https://platform.openai.com/docs/api-reference/audio/create) providing access to various models developed by OpenAI for audio-related tasks.
+The `ballarinax/openai.audio` package offers APIs to connect and interact with [audio related endpoints of OpenAI REST API v1](https://platform.openai.com/docs/api-reference/audio/create) providing access to various models developed by OpenAI for audio-related tasks.
 
 ## Setup guide
 
@@ -56,10 +56,7 @@ Now, utilize the available connector operations.
 
 #### Transcribe audio into input language
 ```ballerina
-import ballerina/io;
-
 public function main(string fileName) returns error? {
-
     byte[] fileContent = check io:fileReadBytes(fileName);
     audio:CreateTranscriptionRequest request = {
         model: "whisper-1",
@@ -68,7 +65,6 @@ public function main(string fileName) returns error? {
 
     audio:CreateTranscriptionResponse response =
         check OpenAIAudio->/audio/transcriptions.post(request);
-    io:println(response);
 }
 ```
 
