@@ -110,7 +110,7 @@ version = "0.0.0"
 [[package]]
 org = "ballerina"
 name = "jwt"
-version = "2.12.1"
+version = "2.11.0"
 dependencies = [
 	{org = "ballerina", name = "cache"},
 	{org = "ballerina", name = "crypto"},
@@ -313,9 +313,9 @@ modules = [
 ]
 
 [[package]]
-org = "wishulaj"
-name = "Audio"
-version = "0.1.0"
+org = "ballerinax"
+name = "openai.audio"
+version = "1.0.5"
 dependencies = [
 	{org = "ballerina", name = "constraint"},
 	{org = "ballerina", name = "http"},
@@ -325,6 +325,6 @@ dependencies = [
 	{org = "ballerinai", name = "observe"}
 ]
 modules = [
-	{org = "wishulaj", packageName = "Audio", moduleName = "Audio"}
+	{org = "ballerinax", packageName = "openai.audio", moduleName = "openai.audio"}
 ]
 

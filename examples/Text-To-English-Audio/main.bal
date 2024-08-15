@@ -20,12 +20,13 @@ import ballerinax/openai.audio;
 
 configurable string openAIKey = ?;
 
-const string AUDIO_FILE_PATH = "./translated_audio.mp3";
-const string TEXT_FILE_PATH = "./text.txt";
+const AUDIO_FILE_PATH = "./translated_audio.mp3";
+const TEXT_FILE_PATH = "./text.txt";
+const TRANSLATION_AUDIO_FILE = "englishAudio.mp3";
 
-public function main(string textURL) returns error? {
+public function main(string textUrl) returns error? {
         // Creates an HTTP client to download the text file
-        http:Client textEP = check new(textURL);
+        http:Client textEP = check new(textUrl);
         http:Response response = check textEP->/get();
         string fileContent = check response.getTextPayload();
         check io:fileWriteString(TEXT_FILE_PATH, fileContent);
@@ -47,7 +48,7 @@ public function main(string textURL) returns error? {
         audio:CreateTranslationRequest translationRequest = {
             file: { 
                 fileContent: speechResponse, 
-                fileName: "englishAudio.mp3"
+                fileName: TRANSLATION_AUDIO_FILE
         },
             model: "whisper-1"
         };
