@@ -19,19 +19,19 @@ import ballerina/mime;
 import ballerina/io;
 import ballerina/os;
 
-configurable boolean isLiveServer = os:getEnv("isLiveServer") == "true";
+configurable boolean isLiveServer = os:getEnv("IS_LIVE_SERVER") == "true";
 configurable string token = isLiveServer ? os:getEnv("OPENAI_API_KEY") : "test";
 configurable string serviceUrl = isLiveServer ? "https://api.openai.com/v1" : "http://localhost:9090";
-configurable string apiKey = isLiveServer ? token : "";
+
 
 final ConnectionConfig config = {
     auth: {
-        token: apiKey
+        token
     }
 };
 final Client openAIAudio = check new(config,serviceUrl);
 
-const AUDIO_FILE_PATH1 = "/audioClip.mp3";
+const AUDIO_FILE_PATH1 = "tests/resources/audioClip.mp3";
 
 @test:Config {
     groups: ["live_tests", "mock_tests"]

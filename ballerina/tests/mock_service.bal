@@ -24,7 +24,7 @@ public type OkByteArray record {|
     map<string|string[]> headers;
 |};
 
-const AUDIO_FILE_PATH = "./audioClip.mp3";
+const AUDIO_FILE_PATH = "tests/resources/audioClip.mp3";
 readonly & byte[] content = check io:fileReadBytes(AUDIO_FILE_PATH);
 
 service / on ep0 {
