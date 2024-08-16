@@ -20,13 +20,13 @@ import ballerina/io;
 import ballerina/os;
 
 configurable boolean isLiveServer = os:getEnv("IS_LIVE_SERVER") == "true";
-configurable string token = isLiveServer ? os:getEnv("OPENAI_API_KEY") : "test";
+configurable string apiKey = isLiveServer ? os:getEnv("OPENAI_API_KEY") : "test";
 configurable string serviceUrl = isLiveServer ? "https://api.openai.com/v1" : "http://localhost:9090";
 
 
 final ConnectionConfig config = {
     auth: {
-        token
+        token:apiKey
     }
 };
 final Client openAIAudio = check new(config,serviceUrl);
