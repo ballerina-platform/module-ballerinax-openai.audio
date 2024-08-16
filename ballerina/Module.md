@@ -78,4 +78,5 @@ bal run
 
 The `OpenAI Audio` connector provides practical examples illustrating usage in various scenarios. Explore these [examples](https://github.com/module-ballerinax-openai.audio/tree/main/examples/), covering the following use cases:
 
-[//]: # (TODO: Add examples)
+1. [International news translator](https://github.com/ballerina-platform/module-ballerinax-openai.audio/tree/main/examples/International-news-translator) - Converts a text news given in any language to english
+2. [Meeting transcriber and translator](https://github.com/ballerina-platform/module-ballerinax-openai.audio/tree/main/examples/Meeting-transcriber-and-translator) - Converts an audio given in a different language into text in input language and english
