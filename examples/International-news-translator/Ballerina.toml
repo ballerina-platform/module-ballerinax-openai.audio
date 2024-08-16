@@ -1,0 +1,9 @@
+[package]
+org = "wso2"
+name = "International_news_translator"
+version = "0.1.0"
+distribution = "2201.9.3"
+
+[build-options]
+observabilityIncluded = true
+
