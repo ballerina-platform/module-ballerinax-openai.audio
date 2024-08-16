@@ -66,7 +66,6 @@ isolated function  testCreateSpeech() returns error? {
 
 
 @test:Config {
-    enable:false,
     groups: ["live_tests", "mock_tests"]
 }
 isolated function  testCreateTranscription() returns error? {  
