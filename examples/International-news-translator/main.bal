@@ -20,16 +20,16 @@ import ballerinax/openai.audio;
 
 configurable string openAIKey = ?;
 
-const AUDIO_FILE_PATH = "./translated_audio.mp3";
-const TEXT_FILE_PATH = "./text.txt";
-const TRANSLATION_AUDIO_FILE = "englishAudio.mp3";
+const ENGLISH_NEWS_AUDIO_FILE_PATH = "./translated_news.mp3";
+const DOWNLOADED_NEWS_TEXT_FILE_PATH = "./news.txt";
+const TRANSLATED_NEWS_AUDIO_FILE = "englishAudio.mp3";
 
-public function main(string textUrl) returns error? {
+public function main(string newsTextUrl) returns error? {
         // Creates an HTTP client to download the text file
-        http:Client textEP = check new(textUrl);
+        http:Client textEP = check new(newsTextUrl);
         http:Response response = check textEP->/get();
         string fileContent = check response.getTextPayload();
-        check io:fileWriteString(TEXT_FILE_PATH, fileContent);
+        check io:fileWriteString(DOWNLOADED_NEWS_TEXT_FILE_PATH, fileContent);
 
         // Creates an OpenAI audio client
         audio:Client openAIAudio = check new({auth: {token: openAIKey}});
@@ -37,7 +37,7 @@ public function main(string textUrl) returns error? {
         // Creates a request to convert the text into audio
         audio:CreateSpeechRequest speechRequest = {
             voice: "alloy", 
-            input: check io:fileReadString(TEXT_FILE_PATH), 
+            input: io:fileReadString(DOWNLOADED_NEWS_TEXT_FILE_PATH), 
             model: "whisper-1"
         };
 
@@ -48,7 +48,7 @@ public function main(string textUrl) returns error? {
         audio:CreateTranslationRequest translationRequest = {
             file: { 
                 fileContent: speechResponse, 
-                fileName: TRANSLATION_AUDIO_FILE
+                fileName: TRANSLATED_NEWS_AUDIO_FILE
         },
             model: "whisper-1"
         };
@@ -67,6 +67,6 @@ public function main(string textUrl) returns error? {
         byte[] englishAudio = check openAIAudio->/audio/speech.post(targetedSpeechRequest);
 
         // Get the translated audio and save it in a '.mp3' file        
-        check io:fileWriteBytes(AUDIO_FILE_PATH,englishAudio);
-        io:println("Translated podcast saved as translated_audio.mp3");
+        check io:fileWriteBytes(ENGLISH_NEWS_AUDIO_FILE_PATH,englishAudio);
+        io:println("Translated news saved as translated_news.mp3");
     }

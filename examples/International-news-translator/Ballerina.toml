@@ -1,8 +1,9 @@
 [package]
 org = "wso2"
-name = "audio_to_input_language_and_english"
+name = "International_news_translator"
 version = "0.1.0"
 distribution = "2201.9.3"
 
 [build-options]
 observabilityIncluded = true
+

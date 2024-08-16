@@ -20,18 +20,18 @@ import ballerinax/openai.audio;
 
 configurable string openAIKey = ?;
 
-const TRANSCRIBED_TEXT_FILE_PATH = "./transcribed.txt";
-const AUDIO_FILE_PATH = "./audio.mp3";
-const TRANSLATED_TEXT_FILE_PATH = "./translated.txt";
-const TRANSCRIPTION_AUDIO_FILE = "audio.mp3";
-const TRANSLATION_AUDIO_FILE = "audioen.mp3";
+const TRANSCRIBED_MEETING_TEXT_FILE_PATH = "./transcribed.txt";
+const MEETING_AUDIO_FILE_PATH = "./audio.mp3";
+const TRANSLATED_MEETING_TEXT_FILE_PATH = "./translated.txt";
+const TRANSCRIBED_MEETING_AUDIO_FILE = "audio.mp3";
+const TRANSLATED_MEETING_AUDIO_FILE = "audioen.mp3";
 
-public function main(string audioURL) returns error? {
+public function main(string meetingAudioUrl) returns error? {
     // Creates a HTTP client to download the audio file
-    http:Client audioEP = check new (audioURL);
+    http:Client audioEP = check new (meetingAudioUrl);
     http:Response httpResp = check audioEP->/get();
     byte[] audioBytes = check httpResp.getBinaryPayload();
-    check io:fileWriteBytes(AUDIO_FILE_PATH, audioBytes);
+    check io:fileWriteBytes(MEETING_AUDIO_FILE_PATH, audioBytes);
 
     // Creates an OpenAI audio client
     audio:Client openAIAudio = check new ({auth: {token: openAIKey}});
@@ -39,8 +39,8 @@ public function main(string audioURL) returns error? {
     // Creates a transcription request
     audio:CreateTranscriptionRequest transcriptionRequest = {
             file: {
-                fileContent: check io:fileReadBytes(AUDIO_FILE_PATH),
-                fileName: TRANSCRIPTION_AUDIO_FILE
+                fileContent: check io:fileReadBytes(MEETING_AUDIO_FILE_PATH),
+                fileName: TRANSCRIBED_MEETING_AUDIO_FILE
             },
             model: "whisper-1"
     };
@@ -50,14 +50,14 @@ public function main(string audioURL) returns error? {
 
     // Saves the transcribed text to a file
     string transcribedText = transcriptionResponse.text;
-    check io:fileWriteString(TRANSCRIBED_TEXT_FILE_PATH, transcribedText);
-    io:println("Transcribed text saved successfully at: ", TRANSCRIBED_TEXT_FILE_PATH);
+    check io:fileWriteString(TRANSCRIBED_MEETING_TEXT_FILE_PATH, transcribedText);
+    io:println("Transcribed text saved successfully at: ", TRANSCRIBED_MEETING_TEXT_FILE_PATH);
 
     //Creates a translation request
     audio:CreateTranslationRequest translationRequest = {
             file: {
-                fileContent: check io:fileReadBytes(AUDIO_FILE_PATH),
-                fileName: TRANSLATION_AUDIO_FILE
+                fileContent: check io:fileReadBytes(MEETING_AUDIO_FILE_PATH),
+                fileName: TRANSLATED_MEETING_AUDIO_FILE
             },
             model: "whisper-1"
         };
@@ -67,7 +67,7 @@ public function main(string audioURL) returns error? {
 
     // Saves the translated text to a file
     string translatedText = translationResponse.text;
-    check io:fileWriteString(TRANSLATED_TEXT_FILE_PATH, translatedText);
-    io:println("Transcribed text saved successfully at: ", TRANSLATED_TEXT_FILE_PATH);
+    check io:fileWriteString(TRANSLATED_MEETING_TEXT_FILE_PATH, translatedText);
+    io:println("Transcribed text saved successfully at: ", TRANSLATED_MEETING_TEXT_FILE_PATH);
 }
 

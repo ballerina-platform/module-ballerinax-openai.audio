@@ -1,6 +1,6 @@
-## Audio To Input Language And English
+## Meeting transcriber and translator
 
-This use case downloads an audio file of different language from a given URL, transcribes its content to text using OpenAI's Whisper model, and then translates the audio file to english. This use case is useful for Automated Meeting Transcription and translation 
+This use case downloads a audio file of meeting in different language from a given URL, transcribes its content to text using OpenAI's Whisper model, and then translates the meeting audio file to english. This use case is useful for Automated Meeting Transcription and translation 
 
 ## Prerequisites
 
