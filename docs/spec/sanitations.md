@@ -6,7 +6,7 @@ _Edition_: Swan Lake
 # Sanitation for OpenAPI specification
 
 This document records the sanitation done on top of the official OpenAPI specification from OpenAI Audio. 
-The OpenAPI specification is obtained from The OpenAPI specification is obtained from the [OpenAPI specification for the OpenAI API](https://github.com/openai/openai-openapi/blob/master/openapi.yaml)..
+The OpenAPI specification is obtained from The OpenAPI specification is obtained from the [OpenAPI specification for the OpenAI API](https://github.com/openai/openai-openapi/blob/master/openapi.yaml).
 These changes are done in order to improve the overall usability, and as workarounds for some known language limitations.
 
 1. **Removed the `default:null` property from the below schemas**:
@@ -54,6 +54,9 @@ These changes are done in order to improve the overall usability, and as workaro
                - $ref: "#/components/schemas/CreateTranslationResponseVerboseJson"
 
    - **Reason**: This modification has been implemented to enhance the readability and user-friendliness of record naming conventions.
+ 
+3. Modified the generated util function `createBodyParts` as a workaround for the issue https://github.com/ballerina-platform/ballerina-library/issues/6872. This change should be reverted once the issue is fixed in a future release (2201.9.4 or later).
+
 
 ## OpenAPI cli command
 
