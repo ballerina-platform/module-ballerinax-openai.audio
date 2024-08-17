@@ -59,12 +59,22 @@ isolated function createBodyParts(record {|anydata...;|} anyRecord, map<Encoding
         } else if value is byte[] {
             entity.setContentDisposition(mime:getContentDispositionObject(string `form-data; name=${key};`));
             entity.setByteArray(value);
-        } else if value is SimpleBasicType|SimpleBasicType[] {
+        } else if value is SimpleBasicType {
             entity.setContentDisposition(mime:getContentDispositionObject(string `form-data; name=${key};`));
             entity.setText(value.toString());
-        } else if value is record {}|record {}[] {
+        } else if value is SimpleBasicType[] {
+            foreach SimpleBasicType member in value {
+                entity.setContentDisposition(mime:getContentDispositionObject(string `form-data; name=${key};`));
+                entity.setText(member.toString());
+            }
+        } else if value is record {} {
             entity.setContentDisposition(mime:getContentDispositionObject(string `form-data; name=${key};`));
             entity.setJson(value.toJson());
+        } else if value is record {}[] {
+            foreach record{} member in value {
+                entity.setContentDisposition(mime:getContentDispositionObject(string `form-data; name=${key};`));
+                entity.setJson(member.toJson());
+            }
         }
         if encodingData?.contentType is string {
             check entity.setContentType(encodingData?.contentType.toString());
