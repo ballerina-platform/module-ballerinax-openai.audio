@@ -41,7 +41,7 @@ These changes are done in order to improve the overall usability, and as workaro
          - $ref: "#/components/schemas/CreateTranscriptionResponse"
       
          - CreateTranscriptionResponse:
-            oneOf:
+            - oneOf:
                - $ref: "#/components/schemas/CreateTranscriptionResponseJson"
                - $ref: "#/components/schemas/CreateTranscriptionResponseVerboseJson"
 
@@ -49,7 +49,7 @@ These changes are done in order to improve the overall usability, and as workaro
          - $ref: "#/components/schemas/CreateTranslationResponse"
 
          - CreateTranslationResponse:
-            oneOf:
+            - oneOf:
                - $ref: "#/components/schemas/CreateTranslationResponseJson"
                - $ref: "#/components/schemas/CreateTranslationResponseVerboseJson"
 
