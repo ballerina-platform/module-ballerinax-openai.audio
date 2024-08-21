@@ -36,7 +36,7 @@ These changes are done in order to improve the overall usability, and as workaro
       - oneOf:
          - $ref: "#/components/schemas/CreateTranslationResponseJson"
          - $ref: "#/components/schemas/CreateTranslationResponseVerboseJson"
-         ```
+   ```
 
    - **Updated**:
       - Created a new `schema` in the `components` field and added the reference in the `/audio/transcription` path definition
@@ -47,7 +47,7 @@ These changes are done in order to improve the overall usability, and as workaro
             - oneOf:
                - $ref: "#/components/schemas/CreateTranscriptionResponseJson"
                - $ref: "#/components/schemas/CreateTranscriptionResponseVerboseJson"
-               ```
+      ```
 
       - Created a new `schema` in the `components` field and added the reference in the `/audio/translation` path definition
       ```bash
@@ -57,7 +57,7 @@ These changes are done in order to improve the overall usability, and as workaro
             - oneOf:
                - $ref: "#/components/schemas/CreateTranslationResponseJson"
                - $ref: "#/components/schemas/CreateTranslationResponseVerboseJson"
-               ```
+      ```
 
    - **Reason**: This modification has been implemented to enhance the readability and user-friendliness of record naming conventions.
  
