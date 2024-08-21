@@ -38,11 +38,11 @@ public function main(string meetingAudioUrl) returns error? {
 
     // Creates a transcription request
     audio:CreateTranscriptionRequest transcriptionRequest = {
-            file: {
-                fileContent: check io:fileReadBytes(MEETING_AUDIO_FILE_PATH),
-                fileName: TRANSCRIBED_MEETING_AUDIO_FILE
-            },
-            model: "whisper-1"
+        file: {
+            fileContent: check io:fileReadBytes(MEETING_AUDIO_FILE_PATH),
+            fileName: TRANSCRIBED_MEETING_AUDIO_FILE
+        },
+        model: "whisper-1"
     };
 
     // Transcribes the audio file
@@ -55,12 +55,12 @@ public function main(string meetingAudioUrl) returns error? {
 
     //Creates a translation request
     audio:CreateTranslationRequest translationRequest = {
-            file: {
-                fileContent: check io:fileReadBytes(MEETING_AUDIO_FILE_PATH),
-                fileName: TRANSLATED_MEETING_AUDIO_FILE
-            },
-            model: "whisper-1"
-        };
+        file: {
+            fileContent: check io:fileReadBytes(MEETING_AUDIO_FILE_PATH),
+            fileName: TRANSLATED_MEETING_AUDIO_FILE
+        },
+        model: "whisper-1"
+    };
 
     // Translates the audio file
     audio:CreateTranslationResponse translationResponse = check openAIAudio->/audio/translations.post(translationRequest);

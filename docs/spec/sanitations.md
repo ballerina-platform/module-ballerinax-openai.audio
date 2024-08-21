@@ -19,7 +19,7 @@ These changes are done in order to improve the overall usability, and as workaro
    - **Updated**:
       - Removed the `default` parameter 
 
-   - **Reason**: This change is done as a workaround for ballerina openapi tool not allowing to generate the client.
+   - **Reason**: This change is done as a workaround for ballerina openapi tool not allowing to generate the client until the openAPI tool supports v3.1.x schemas
 
 2. **Modified the specifications to use named schemas instead of inline schemas**
 
@@ -28,6 +28,7 @@ These changes are done in order to improve the overall usability, and as workaro
    `/audio/transcriptions`
 
    - **Original**:
+   ```bash
       - oneOf:
          - $ref: "#/components/schemas/CreateTranscriptionResponseJson"
          - $ref: "#/components/schemas/CreateTranscriptionResponseVerboseJson"
@@ -35,23 +36,28 @@ These changes are done in order to improve the overall usability, and as workaro
       - oneOf:
          - $ref: "#/components/schemas/CreateTranslationResponseJson"
          - $ref: "#/components/schemas/CreateTranslationResponseVerboseJson"
+   ```
 
    - **Updated**:
       - Created a new `schema` in the `components` field and added the reference in the `/audio/transcription` path definition
+      ```bash
          - $ref: "#/components/schemas/CreateTranscriptionResponse"
       
          - CreateTranscriptionResponse:
-            oneOf:
+            - oneOf:
                - $ref: "#/components/schemas/CreateTranscriptionResponseJson"
                - $ref: "#/components/schemas/CreateTranscriptionResponseVerboseJson"
+      ```
 
       - Created a new `schema` in the `components` field and added the reference in the `/audio/translation` path definition
+      ```bash
          - $ref: "#/components/schemas/CreateTranslationResponse"
 
          - CreateTranslationResponse:
-            oneOf:
+            - oneOf:
                - $ref: "#/components/schemas/CreateTranslationResponseJson"
                - $ref: "#/components/schemas/CreateTranslationResponseVerboseJson"
+      ```
 
    - **Reason**: This modification has been implemented to enhance the readability and user-friendliness of record naming conventions.
  

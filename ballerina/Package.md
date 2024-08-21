@@ -41,11 +41,11 @@ import ballerinax/openai.audio;
 Create a `audio:ConnectionConfig` with the obtained API Key and initialize the connector.
 
 ```ballerina
-configurable string apiKey = ?;
+configurable string token = ?;
 
 final images:Client openAIAudio = check new ({
     auth: {
-        token: apiKey
+        token
     }
 });
 ```
