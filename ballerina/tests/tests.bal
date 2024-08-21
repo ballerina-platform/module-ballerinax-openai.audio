@@ -25,17 +25,17 @@ configurable string serviceUrl = isLiveServer ? "https://api.openai.com/v1" : "h
 
 const AUDIO_FILE_PATH1 = "tests/resources/audioClip.mp3";
 
-@test:Config {
-    groups: ["live_tests", "mock_tests"]
-}
-isolated function  testCreateTranslation() returns error? {
-    final ConnectionConfig config = {
+final ConnectionConfig config = {
         auth: {
             token: apiKey
         }
     };
-    final Client openAIAudio = check new(config,serviceUrl);
+final Client openAIAudio = check new(config,serviceUrl);
 
+@test:Config {
+    groups: ["live_tests", "mock_tests"]
+}
+isolated function  testCreateTranslation() returns error? {
     byte[] audioContent = check io:fileReadBytes(AUDIO_FILE_PATH1);
 
     CreateTranslationRequest payload = {
@@ -51,13 +51,6 @@ isolated function  testCreateTranslation() returns error? {
     groups: ["live_tests", "mock_tests"]
 }
 isolated function  testCreateSpeech() returns error? {
-    final ConnectionConfig config = {
-        auth: {
-            token: apiKey
-        }
-    };
-    final Client openAIAudio = check new(config,serviceUrl);
-
     CreateSpeechRequest requestPayload = {
         model: "tts-1",
         input: "The",
@@ -74,13 +67,6 @@ isolated function  testCreateSpeech() returns error? {
     groups: ["live_tests", "mock_tests"]
 }
 isolated function  testCreateTranscription() returns error? {
-    final ConnectionConfig config = {
-        auth: {
-            token: apiKey
-        }
-    };
-    final Client openAIAudio = check new(config,serviceUrl); 
-
     byte[] audioContent = check io:fileReadBytes(AUDIO_FILE_PATH1);
 
    CreateTranscriptionRequest payload = {
