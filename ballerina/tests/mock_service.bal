@@ -18,6 +18,7 @@ import ballerina/http;
 import ballerina/io;
 
 listener http:Listener ep0 = new (9090);
+
 public type OkByteArray record {|
     *http:Ok;
     byte[] body;
@@ -28,23 +29,20 @@ const AUDIO_FILE_PATH = "tests/resources/audioClip.mp3";
 readonly & byte[] content = check io:fileReadBytes(AUDIO_FILE_PATH);
 
 service / on ep0 {
-
     # Converts a given text to speech.
-    # 
+    #
     # + return - OkByteArray if the operation is successful.
     resource function post audio/speech(@http:Payload CreateSpeechRequest payload) returns OkByteArray|error {
-        
         return {
             body: content,
-            headers: { "Transfer-Encoding": "chunked" }
+            headers: {"Transfer-Encoding": "chunked"}
         };
     }
 
     # Transcribes a given audio file.
-    # 
+    #
     # + return - CreateTranscriptionResponse if the operation is successful.
     resource function post audio/transcriptions(http:Request request) returns CreateTranscriptionResponse {
-        
         CreateTranscriptionResponseJson mockTranscriptionResponse = {
             text: "The"
         };
@@ -53,10 +51,9 @@ service / on ep0 {
     }
 
     # Translates a given text.
-    # 
+    #
     # + return - CreateTranslationResponse if the operation is successful.
     resource function post audio/translations(http:Request request) returns CreateTranslationResponse {
-        
         CreateTranslationResponseJson mockTranslationResponse = {
             text: "The"
         };
