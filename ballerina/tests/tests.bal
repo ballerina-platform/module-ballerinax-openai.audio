@@ -37,7 +37,6 @@ const AUDIO_FILE_PATH1 = "tests/resources/audioClip.mp3";
     groups: ["live_tests", "mock_tests"]
 }
 isolated function  testCreateTranslation() returns error? {
-
     byte[] audioContent = check io:fileReadBytes(AUDIO_FILE_PATH1);
 
     CreateTranslationRequest payload = {

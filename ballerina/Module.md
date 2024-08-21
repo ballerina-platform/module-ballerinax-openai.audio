@@ -45,7 +45,7 @@ configurable string apiKey = ?;
 
 final images:Client openAIAudio = check new ({
     auth: {
-        token: apiKey
+        token
     }
 });
 ```
