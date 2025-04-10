@@ -2,7 +2,7 @@
 distribution = "2201.9.3"
 org = "ballerinax"
 name = "openai.audio"
-version = "2.0.1"
+version = "3.0.0"
 license = ["Apache-2.0"]
 authors = ["Ballerina"]
 keywords = ["AI/Audio", "OpenAI", "Cost/Paid", "speech-to-text", "Whisper", "Vendor/OpenAI"] 
