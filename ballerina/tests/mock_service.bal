@@ -26,7 +26,7 @@ public type OkByteArray record {|
 |};
 
 const AUDIO_FILE_PATH = "tests/resources/audioClip.mp3";
-readonly & byte[] content = check io:fileReadBytes(AUDIO_FILE_PATH);
+final readonly & byte[] content = check io:fileReadBytes(AUDIO_FILE_PATH);
 
 service / on ep0 {
     # Converts a given text to speech.

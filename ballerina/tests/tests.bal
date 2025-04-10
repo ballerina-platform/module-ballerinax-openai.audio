@@ -57,7 +57,7 @@ isolated function testCreateSpeech() returns error? {
         model: "tts-1",
         input: "The",
         voice: "alloy",
-        response_format: "mp3",
+        responseFormat: "mp3",
         speed: 1.0
     };
     byte[] response = check openAIAudio->/audio/speech.post(requestPayload);
