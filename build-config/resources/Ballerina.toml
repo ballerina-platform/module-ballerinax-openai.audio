@@ -5,7 +5,7 @@ name = "openai.audio"
 version = "@toml.version@"
 license = ["Apache-2.0"]
 authors = ["Ballerina"]
-keywords = ["AI/Audio", "OpenAI", "Cost/Paid", "speech-to-text", "Whisper", "Vendor/OpenAI"] 
+keywords = ["AI/Audio", "Cost/Paid", "speech-to-text", "Whisper", "Vendor/OpenAI", "Area/AI", "Type/Connector"]
 icon = "icon.png"
 repository = "https://github.com/ballerina-platform/module-ballerinax-openai.audio"
 
