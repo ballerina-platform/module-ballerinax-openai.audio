@@ -1,8 +1,15 @@
 ## Overview
 
-[OpenAI](https://openai.com/), an AI research organization focused on creating friendly AI for humanity, offers the [OpenAI API](https://platform.openai.com/docs/api-reference/introduction) to access its powerful AI models for tasks like natural language processing and image generation.
+[OpenAI](https://openai.com/) offers powerful AI models for tasks like natural language processing, audio transcription, and image generation.
 
-The `ballarinax/openai.audio` package offers APIs to connect and interact with [audio related endpoints of OpenAI REST API v1](https://platform.openai.com/docs/api-reference/audio/create) providing access to various models developed by OpenAI for audio-related tasks.
+The OpenAI Audio connector offers APIs to connect and interact with the audio-related endpoints of the OpenAI REST API, providing access to various models developed by OpenAI for audio-related tasks such as transcription and translation.
+
+### Key Features
+- High-quality audio transcription and translation via the Whisper model
+- Support for multiple audio file formats (mp3, mp4, mpeg, mpga, m4a, wav, webm)
+- Efficient speech-to-text conversion in various languages
+- Simplified integration with OpenAI audio processing endpoints
+- Robust security with API key-based authentication
 
 ## Setup guide
 
