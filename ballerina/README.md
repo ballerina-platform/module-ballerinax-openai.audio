@@ -1,8 +1,6 @@
 ## Overview
 
-[OpenAI](https://openai.com/) offers powerful AI models for tasks like natural language processing, audio transcription, and image generation.
-
-The OpenAI Audio connector offers APIs to connect and interact with the audio-related endpoints of the OpenAI REST API, providing access to various models developed by OpenAI for audio-related tasks such as transcription and translation.
+The `openai.audio` module is a direct, fully-typed REST connector for OpenAI's [Audio API](https://platform.openai.com/docs/api-reference/audio). Use it as a standalone client for speech-to-text transcription and translation via Whisper and for text-to-speech generation, independent of the `ballerina/ai` agent framework.
 
 ### Key Features
 - High-quality audio transcription and translation via the Whisper model
